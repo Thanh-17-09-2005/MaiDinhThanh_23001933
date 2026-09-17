@@ -23,81 +23,6 @@ $students = [
     ]
 ];
 
-/*
-==== Bài 1 ====
-
-// Biến dùng để tính tổng điểm
-$totalScore = 0;
-
-// Duyệt danh sách sinh viên bằng foreach
-foreach ($students as $student) {
-    echo "Họ tên: " . $student["name"] . "<br>";
-    echo "Tuổi: " . $student["age"] . "<br>";
-    echo "Điểm: " . $student["score"] . "<br>";
-    echo "-------------------------<br>";
-
-    // Cộng điểm vào tổng
-    $totalScore += $student["score"];
-}
-
-// Tính điểm trung bình
-$averageScore = $totalScore / count($students);
-
-// In điểm trung bình
-echo "<strong>Điểm trung bình của lớp: " . $averageScore . "</strong><br>";
-*/
-
-
-
-/* 
-==== Bài 2 ====
-
-// 1. Tính điểm trung bình
-function calculateAverageScore($students) {
-    $totalScore = 0;
-
-    foreach ($students as $student) {
-        $totalScore += $student["score"];
-    }
-
-    return $totalScore / count($students);
-}
-
-// 2. Xếp loại sinh viên
-function getRank($score) {
-    if ($score >= 8) {
-        return "Giỏi";
-    } elseif ($score >= 6.5) {
-        return "Khá";
-    } elseif ($score >= 5) {
-        return "Trung bình";
-    } else {
-        return "Yếu";
-    }
-}
-
-// 3. Hiển thị thông tin sinh viên
-function displayStudent($student) {
-    echo "Họ tên: " . $student["name"] . "<br>";
-    echo "Tuổi: " . $student["age"] . "<br>";
-    echo "Điểm: " . $student["score"] . "<br>";
-    echo "Xếp loại: " . getRank($student["score"]) . "<br>";
-    echo "-------------------------<br>";
-}
-
-// Hiển thị tất cả sinh viên
-foreach ($students as $student) {
-    displayStudent($student);
-}
-
-// Tính và hiển thị điểm trung bình
-$averageScore = calculateAverageScore($students);
-
-echo "<strong>Điểm trung bình: " . $averageScore . "</strong>";
-*/
-
-
-
 // 1. Tìm sinh viên có điểm cao nhất
 function findBestStudent($students) {
     $bestStudent = $students[0];
@@ -148,9 +73,9 @@ function findStudentByName($students, $name) {
     return null;
 }
 
-// ============================
+// ================
 // GỌI CÁC FUNCTION
-// ============================
+// ================
 
 // Sinh viên điểm cao nhất
 $bestStudent = findBestStudent($students);
