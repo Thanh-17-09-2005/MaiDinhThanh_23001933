@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+h1 {
+    color: #333;
+}
+
+.table-container {
+    width: 70%;
+    margin: 0 auto;
+}
+
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px;
+}
+
+th {
+    background-color: #ffeeee;
+}
+
+td {
+    background-color: #CCCCFF;
+}
+
+a {
+    text-decoration: none;
+}
+
+.error {
+    color: red;
+}
+
+.sucsess {
+    color: green;
+}
+
+form {
+    width: 400px;
+}
+
+input {
+    width: 100%;
+    padding: 8px
+}
+
+button {
+    padding: 8px 15px;
+    background-color: lightblue;
+    border: 2px solid #4682B4;
+}
+
+.button-container {
+    text-align: right;
+    margin-top: 10px;
+    width: 100%;
+}
