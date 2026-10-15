@@ -1,3 +1,11 @@
+<?php
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -8,9 +16,18 @@
 </head>
 <body>
     <h1>QUẢN LÝ GIỎ HÀNG</h1>
-    <nav>
-        <a href="product_list.php">Danh sách sản phẩm</a> |
-        <a href="product_add.php">Thêm sản phẩm</a>
-    </nav>
+    
+    <?php if (isset($_SESSION["user_id"])): ?>
+        <p>
+            Xin chào,
+            <strong><?php echo htmlspecialchars($_SESSION["username"]); ?></strong>
+            |
+            <a href="logout.php">Đăng xuất</a>
+        </p>
+        <nav>
+            <a href="product_list.php">Danh sách sản phẩm</a> |
+            <a href="product_add.php">Thêm sản phẩm</a>
+        </nav>
+    <?php endif; ?>
 
 <hr>

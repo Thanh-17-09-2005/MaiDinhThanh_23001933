@@ -1,5 +1,7 @@
 <?php
 
+require_once "common/auth.php";
+
 require_once __DIR__ . "/model/product.php";
 
 $products = getAllProducts();
