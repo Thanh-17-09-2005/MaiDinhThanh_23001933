@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt vé xem phim</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app" class="container">
+        <h1>ĐẶT VÉ XEM PHIM</h1>
+
+        <form class="booking-card" @submit.prevent="bookTicket">
+            <!-- Họ tên khách hàng -->
+            <div class="form-group">
+                <label for="customerName">Họ tên khách hàng:</label>
+
+                <input 
+                    type="text"
+                    id="customerName"
+                    v-model.trim="customerName"
+                    placeholder="Nhập họ tên của bạn"    
+                >
+            </div>
+
+            <!-- Chọn suất chiếu -->
+            <div class="form-group">
+                <label for="showtime">Suất chiếu</label>
+
+                <select id="showtime" v-model="showtime" required>
+                    <option value="">Chọn suất chiếu của bạn</option>
+                    <option value="09:00">09:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="19:00">19:00</option>
+                    <option value="22:00">22:00</option>
+                </select>
+            </div>
+
+            <!-- Chọn loại vé -->
+            <div class="form-group">
+                <label>Loại vé:</label>
+
+                <div class="radio-group">
+                    <label>
+                        <input
+                            type="radio"
+                            value="normal"
+                            v-model="ticketType"
+                        >
+                        Vé thường - 70.000 đồng
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            value="vip"
+                            v-model="ticketType"
+                        >
+                        Vé VIP - 100.000 đồng
+                    </label>
+                </div>
+            </div>
+
+            <!-- Nhập số lượng vé -->
+            <div class="form-group">
+                <label for="quantity">Số lượng vé (1 - 10):</label>
+
+                <div class="quantity-control">
+                    <button 
+                        type="button"
+                        @click="decreaseQuantity"
+                        :disabled="!isQuantityValid || quantity <= 0"
+                    >
+                        - 
+                    </button>
+
+                    <input
+                        type="number"
+                        id="quantity"
+                        v-model.number="quantity"
+                        min="1"
+                        max="10"
+                        step="1"
+                    >
+
+                    <button
+                        type="button"
+                        @click="increaseQuantity"
+                        :disabled="!isQuantityValid || quantity >= 10"
+                    >
+                        +
+                    </button>
+                </div>
+
+                <p v-if="!isQuantityValid" class="error">
+                    Số lượng vé phải là số nguyên từ 1 đến 10
+                </p>
+            </div>
+
+            <!-- Chọn combo -->
+            <div class="form-group">
+                <label class="checkbox-label">
+                    <input
+                        type="checkbox"
+                        v-model="hasCombo"
+                    >
+                    🍿🥤Combo bắp nước ( +45.000 đồng )
+                </label>
+            </div>
+
+            <!-- Chi tiết thanh toán -->
+            <div class="price-box">
+                <p>Giá vé:<strong>{{ formatMoney(ticketPrice) }}</strong></p>
+                <p>Số lượng:<strong>{{ quantity }}</strong></p>
+                <p>Tiền vé:<strong>{{ formatMoney(ticketTotal) }}</strong></p>
+                <p>Tiền combo:<strong> {{formatMoney(comboPrice)}} </strong></p>
+                
+                <hr>
+
+                <p class="total">Tổng tiền:<span>{{ formatMoney(totalPrice) }}</span></p>
+            </div>
+
+            <!-- Các nút chức năng -->
+            <div class="button-group">
+                <button
+                    type="button"
+                    class="btn-reset"
+                    @click="resetForm"
+                >
+                    Đặt lại
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn-book"
+                    :disabled="!isFormValid"
+                >
+                    Đặt vé
+                </button>
+            </div>
+        </form>
+
+        <!-- Thông tin xác nhận -->
+        <div v-if="confirmation" class="confirmation">
+            <h2>🎉CONGRATULATION🎉</h2>
+            <h2>ĐẶT VÉ THÀNH CÔNG</h2>
+
+            <p><strong>Khách hàng: </strong>{{ confirmation.customerName }}</p>
+            <p><strong>Suất chiếu: </strong>{{ confirmation.showtime }}</p>
+            <p><strong>Loại vé: </strong>{{ confirmation.ticketType }}</p>
+            <p><strong>Số lượng vé: </strong>{{ confirmation.quantity }}</p>
+            <p><strong>Combo bắp nước: </strong>{{ confirmation.hasCombo ? 'Có' : 'Không' }}</p>
+
+            <p class="confirmed-total">Tổng thanh toán: {{ formatMoney(confirmation.totalPrice) }}</p>
+        </div>
+    </div>
+
+    <!-- Nạp thư viện Vue -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- Nạp JavaScript của ứng dụng -->
+    <script src="app.js"></script>
+</body>
+</html>

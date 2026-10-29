@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thẻ thông tin sinh viên</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app" class="container">
+        <h1>THẺ THÔNG TIN SINH VIÊN</h1>
+
+        <div class="student-card">
+            <!-- Hiển thị ảnh bằng v-bind -->
+             <img
+                :src="student.avatar"
+                :alt="'Ảnh đại diện của ' + student.fullName"
+                class="avatar"
+            >
+
+            <!-- Hiển thị họ tên bằng {{ }} -->
+            <h2 class="student-name">{{ student.fullName }}</h2>
+
+            <div class="info">
+                <p>
+                    <strong>Mã sinh viên: </strong>
+                    {{ student.studentId }}
+                </p>
+
+                <!-- Hiển thị lớp bằng v-text -->
+                <p>
+                    <strong>Lớp: </strong>
+                    <span v-text="student.className">/span>
+                </p>
+
+                <p>
+                    <strong>Điểm trung bình:</strong>
+                    {{ student.averageScore }}
+                </p>
+
+                <!-- Xếp loại học tập -->
+                <p>
+                    <strong>Xếp loại: </strong>
+
+                    <span 
+                        v-if="student.averageScore >= 8 && student.averageScore <= 10"
+                        class="rank excellent"
+                    >
+                        Giỏi
+                    </span>
+
+                    <span 
+                        v-else-if="student.averageScore >= 6.5 && student.averageScore < 8"
+                        class="rank good"
+                    >
+                        Khá
+                    </span>
+
+                    <span 
+                        v-else-if="student.averageScore >= 5 && student.averageScore < 6.5"
+                        class="rank average"
+                    >
+                        Trung bình
+                    </span>
+
+                    <span 
+                        v-else
+                        class="rank failed"
+                    >
+                        Chưa đạt
+                    </span>
+                </p>
+
+                <!-- Trạng thái học tập -->
+                <p>
+                    <strong>Trạng thái:</strong>
+
+                    <span v-if="student.isStudying" class="studying">
+                        Đang học
+                    </span>
+
+                    <span v-else class="stopped">
+                        Đã nghỉ
+                    </span>
+                 </p>
+            </div>
+
+            <!-- Nút bật/tắt phần giới thiệu -->
+            <button @click="showIntroduction = !showIntroduction">
+                {{ showIntroduction ? 'Ẩn giới thiệu' : 'Xem giới thiệu' }}
+            </button>
+
+            <!-- Hiển thị phần giới thiệu bằng v-show -->
+            <div v-show="showIntroduction" class="introduction">
+                <h3>Giới thiệu sinh viên</h3>
+
+                <p>
+                    Xin chào! Mình là {{ student.fullName }}. <br>
+                    Mình bắt đầu học tại Trường Đại học Khoa học Tự nhiên, ĐHQGHN vào tháng 9/2023. <br>
+                    Hiện tại mình đang học lớp {{ student.className }}. <br>
+                    Điểm trung bình hiện tại của mình là {{ student.averageScore }}. <br>
+                    Mình sinh ra và lớn lên ở Thái Bình (nay là Hưng Yên).
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nạp thư viện Vue.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- Nạp JavaScript của ứng dụng -->
+    <script src="app.js"></script>
+</body>
+</html>

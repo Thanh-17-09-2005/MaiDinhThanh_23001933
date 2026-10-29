@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý công việc cá nhân</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app" class="container">
+        <h1>QUẢN LÝ CÔNG VIỆC</h1>
+        <p class="subtitle">Lên kế hoạch và hoàn thành công việc mỗi ngày!</p>
+
+        <div class="todo-card">
+            <!-- Khu vực nhập công việc -->
+            <div class="add-task">
+                <input
+                    type="text"
+                    v-model.trim="newTask"
+                    @keyup.enter="addTask"
+                    placeholder="Nhập tên công việc..."
+                >
+
+                <button @click="addTask" class="btn-add">Thêm</button>
+            </div>
+
+            <!-- Thống kê công việc -->
+            <div class="statistics">
+                <div class="stat-box">
+                    <span class="stat-number">{{ totalTasks }}</span>
+                    <span class="stat-label">Tổng công việc</span>
+                </div>
+
+                <div class="stat-box">
+                    <span class="stat-number">{{ incompleteTasks }}</span>
+                    <span class="stat-label">Chưa hoàn thành</span>
+                </div>
+
+                <div class="stat-box">
+                    <span class="stat-number">{{ completedTasks }}</span>
+                    <span class="stat-label">Đã hoàn thành</span>
+                </div>
+
+            </div>
+
+            <!-- Bộ lọc công việc -->
+            <div class="filter-section">
+                <label for="taskFilter">Lọc công việc:</label>
+
+                <select id="taskFilter" v-model="currentFilter">
+                    <option value="all">Tất cả</option>
+                    <option value="incomplete">Chưa hoàn thành</option>
+                    <option value="completed">Đã hoàn thành</option>
+                </select>
+
+            </div>
+
+            <!-- Danh sách công việc -->
+            <div class="task-list">
+                <h2>Danh sách công việc</h2>
+
+                <!-- Hiển thị khi chưa có công việc nào -->
+                <p v-if="tasks.length === 0" class="empty-message">Bạn chưa có công việc nào. Hãy thêm công việc mới!</p>
+
+                <!-- Hiển thị khi có công việc nhưng bộ lọc không có kết quả -->
+                <p
+                    v-else-if="filteredTasks.length === 0"
+                    class="empty-message"
+                >
+                    Không có công việc nào phù hợp với bộ lọc.
+                </p>
+
+                <!-- Duyệt danh sách công việc bằng v-for -->
+                <ul v-else>
+                    <li
+                        v-for="task in filteredTasks"
+                        :key="task.id"
+                        class="task-item"
+                        :class="{ completed: task.completed }"
+                    >
+                        <label class="task-content">
+                            <!-- Checkbox đánh dấu hoàn thành -->
+                            <input
+                                type="checkbox"
+                                v-model="task.completed"
+                            >
+
+                            <span>{{ task.name }}</span>
+                        </label>
+
+                        <!-- Nút xóa từng công việc -->
+                        <button
+                            class="btn-delete"
+                            @click="deleteTask(task.id)"
+                        >
+                            Xóa
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Xóa các công việc đã hoàn thành -->
+            <button
+                class="btn-clear"
+                @click="clearCompleted"
+                :disabled="completedTasks === 0"
+            >
+                Xóa các việc đã hoàn thành
+            </button>
+        </div>
+    </div>
+
+    <!-- Nạp thư viện Vue 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- Nạp JavaScript của ứng dụng -->
+    <script src="app.js"></script>
+</body>
+</html>
