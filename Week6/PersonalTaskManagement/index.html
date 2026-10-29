@@ -9,8 +9,14 @@
 </head>
 <body>
     <div id="app" class="container">
+        <img
+            src="..//StudentIDCard//img//avatar.jpg"
+            alt="Ảnh đại diện của Mai Đình Thành"
+            class="avatar"
+        >
+
         <h1>QUẢN LÝ CÔNG VIỆC</h1>
-        <p class="subtitle">Lên kế hoạch và hoàn thành công việc mỗi ngày!</p>
+        <p class="subtitle">🤖Lên kế hoạch và hoàn thành công việc mỗi ngày!🏅</p>
 
         <div class="todo-card">
             <!-- Khu vực nhập công việc -->
@@ -19,7 +25,7 @@
                     type="text"
                     v-model.trim="newTask"
                     @keyup.enter="addTask"
-                    placeholder="Nhập tên công việc..."
+                    placeholder="Nhập tên công việc hôm nay của bạn..."
                 >
 
                 <button @click="addTask" class="btn-add">Thêm</button>
@@ -29,19 +35,18 @@
             <div class="statistics">
                 <div class="stat-box">
                     <span class="stat-number">{{ totalTasks }}</span>
-                    <span class="stat-label">Tổng công việc</span>
+                    <span class="stat-label">🎯Tổng công việc</span>
                 </div>
 
                 <div class="stat-box">
                     <span class="stat-number">{{ incompleteTasks }}</span>
-                    <span class="stat-label">Chưa hoàn thành</span>
+                    <span class="stat-label">⬜Chưa hoàn thành</span>
                 </div>
 
                 <div class="stat-box">
                     <span class="stat-number">{{ completedTasks }}</span>
-                    <span class="stat-label">Đã hoàn thành</span>
+                    <span class="stat-label">✅Đã hoàn thành</span>
                 </div>
-
             </div>
 
             <!-- Bộ lọc công việc -->
@@ -49,16 +54,15 @@
                 <label for="taskFilter">Lọc công việc:</label>
 
                 <select id="taskFilter" v-model="currentFilter">
-                    <option value="all">Tất cả</option>
-                    <option value="incomplete">Chưa hoàn thành</option>
-                    <option value="completed">Đã hoàn thành</option>
+                    <option value="all">🎯Tất cả</option>
+                    <option value="incomplete">⬜Chưa hoàn thành</option>
+                    <option value="completed">✅Đã hoàn thành</option>
                 </select>
-
             </div>
 
             <!-- Danh sách công việc -->
             <div class="task-list">
-                <h2>Danh sách công việc</h2>
+                <h2>📋Danh sách công việc:</h2>
 
                 <!-- Hiển thị khi chưa có công việc nào -->
                 <p v-if="tasks.length === 0" class="empty-message">Bạn chưa có công việc nào. Hãy thêm công việc mới!</p>
@@ -94,7 +98,7 @@
                             class="btn-delete"
                             @click="deleteTask(task.id)"
                         >
-                            Xóa
+                            <u>Xóa</u>
                         </button>
                     </li>
                 </ul>
@@ -106,7 +110,7 @@
                 @click="clearCompleted"
                 :disabled="completedTasks === 0"
             >
-                Xóa các việc đã hoàn thành
+               🗑️ Xóa các công việc đã hoàn thành
             </button>
         </div>
     </div>

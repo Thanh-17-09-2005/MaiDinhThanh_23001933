@@ -55,7 +55,6 @@ createApp({
     methods: {
         // Thêm công việc
         addTask() {
-
             // Loại bỏ khoảng trắng đầu và cuối
             const taskName = this.newTask.trim();
 
@@ -95,5 +94,4 @@ createApp({
             );
         }
     }
-
 }).mount("#app");

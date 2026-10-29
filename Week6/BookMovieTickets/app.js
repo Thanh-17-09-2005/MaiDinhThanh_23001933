@@ -7,6 +7,7 @@ createApp({
         return {
             customerName: "",
             showtime: "",
+            showdate: "",
             ticketType: "normal",
             quantity: 0,
             hasCombo: false,
@@ -22,11 +23,9 @@ createApp({
         ticketPrice() {
             if (this.ticketType === "vip") {
                 return 100000;
-            } else if (this.ticketPrice === "normal") {
-                return 70000;
-            }
+            } 
 
-            return 0;
+            return 70000
         },
 
         // Kiểm tra số lượng vé có hợp lệ không
@@ -104,6 +103,7 @@ createApp({
             this.confirmation = {
                 customerName: this.customerName,
                 showtime: this.showtime,
+                showdate: this.showdate,
 
                 ticketType:
                     this.ticketType === "vip"
@@ -120,6 +120,7 @@ createApp({
         resetForm() {
             this.customerName = "";
             this.showtime = "";
+            this.showdate = "";
             this.ticketType = "normal";
             this.quantity = 0;
             this.hasCombo = false;

@@ -8,32 +8,47 @@
 </head>
 <body>
     <div id="app" class="container">
-        <h1>ĐẶT VÉ XEM PHIM</h1>
+        <h1>📽️ĐẶT VÉ XEM PHIM🎬</h1>
 
         <form class="booking-card" @submit.prevent="bookTicket">
             <!-- Họ tên khách hàng -->
             <div class="form-group">
-                <label for="customerName">Họ tên khách hàng:</label>
+                <label for="customerName">👤Họ tên khách hàng:</label>
 
                 <input 
                     type="text"
                     id="customerName"
                     v-model.trim="customerName"
-                    placeholder="Nhập họ tên của bạn"    
+                    placeholder="Nhập họ tên của bạn..."    
                 >
             </div>
 
-            <!-- Chọn suất chiếu -->
-            <div class="form-group">
-                <label for="showtime">Suất chiếu</label>
+            <strong>Chọn suất chiếu:</strong>
 
-                <select id="showtime" v-model="showtime" required>
-                    <option value="">Chọn suất chiếu của bạn</option>
-                    <option value="09:00">09:00</option>
-                    <option value="14:00">14:00</option>
-                    <option value="19:00">19:00</option>
-                    <option value="22:00">22:00</option>
-                </select>
+            <div class="showtime-container">
+                <!-- Chọn suất chiếu -->
+                <div class="form-group">
+                    <label for="showtime">⌚<u>Giờ</u>:</label>
+
+                    <select id="showtime" v-model="showtime" required>
+                        <option value="">Chọn thời gian bạn muốn</option>
+                        <option value="09:00">🕘09:00</option>
+                        <option value="14:00">🕑14:00</option>
+                        <option value="19:00">🕖19:00</option>
+                        <option value="22:00">🕙22:00</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="showdate">🗓️<u>Ngày</u>:</label>
+
+                    <select id="showdate" v-model="showdate" required>
+                        <option value="">Chọn ngày bạn muốn</option>
+                        <option value="28/10/2026">⏰28/10/2026</option>
+                        <option value="29/10/2026">⏰29/10/2026</option>
+                        <option value="30/10/2026">⏰30/10/2026</option>
+                    </select>
+                </div>
             </div>
 
             <!-- Chọn loại vé -->
@@ -47,7 +62,7 @@
                             value="normal"
                             v-model="ticketType"
                         >
-                        Vé thường - 70.000 đồng
+                        🎟️Vé thường - 70.000 đồng
                     </label>
 
                     <label>
@@ -56,7 +71,7 @@
                             value="vip"
                             v-model="ticketType"
                         >
-                        Vé VIP - 100.000 đồng
+                        🎫Vé VIP - 100.000 đồng
                     </label>
                 </div>
             </div>
@@ -146,7 +161,7 @@
             <h2>ĐẶT VÉ THÀNH CÔNG</h2>
 
             <p><strong>Khách hàng: </strong>{{ confirmation.customerName }}</p>
-            <p><strong>Suất chiếu: </strong>{{ confirmation.showtime }}</p>
+            <p><strong>Suất chiếu: </strong>{{ confirmation.showtime }} - {{confirmation.showdate}}</p>
             <p><strong>Loại vé: </strong>{{ confirmation.ticketType }}</p>
             <p><strong>Số lượng vé: </strong>{{ confirmation.quantity }}</p>
             <p><strong>Combo bắp nước: </strong>{{ confirmation.hasCombo ? 'Có' : 'Không' }}</p>

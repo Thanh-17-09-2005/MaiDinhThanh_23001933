@@ -45,11 +45,31 @@ select {
     font-size: 15px;
 }
 
+.showtime-container {
+    display: flex;
+    gap: 50px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.showtime-container .form-group {
+    flex: 1;
+    min-width: 1;
+}
+
 #showtime:invalid {
     color: #999;
 }
 
 #showtime option {
+    color: #000;
+}
+
+#showdate:invalid {
+    color: #999;
+}
+
+#showdate option {
     color: #000;
 }
 
@@ -178,6 +198,7 @@ button:disabled {
     font-size: 18px;
     font-weight: bold;
     color: #15803d;
+    text-align: right;
 }
 
 .error {
