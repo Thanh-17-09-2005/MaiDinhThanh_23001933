@@ -9,7 +9,7 @@ createApp({
             showtime: "",
             showdate: "",
             ticketType: "normal",
-            quantity: 0,
+            quantity: 1,
             hasCombo: false,
 
             // Lưu thông tin xác nhận sau khi đặt vé
@@ -32,7 +32,7 @@ createApp({
         isQuantityValid() {
             return (
                 Number.isInteger(this.quantity) &&
-                this.quantity >= 0 &&
+                this.quantity >= 1 &&
                 this.quantity <= 10
             );
         },
@@ -122,7 +122,7 @@ createApp({
             this.showtime = "";
             this.showdate = "";
             this.ticketType = "normal";
-            this.quantity = 0;
+            this.quantity = 1;
             this.hasCombo = false;
             this.confirmation = null;
         }
