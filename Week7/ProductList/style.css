@@ -1,0 +1,128 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.status {
+    color: #00cc66;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+}
+
+h2 {
+    color: #34495e;
+    margin-top: 30px;
+}
+
+.filter-section,
+.add-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+input,
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.filter-section input {
+    flex: 2;
+}
+
+.filter-section select,
+.add-section input,
+.add-section select {
+    flex: 1;
+    min-width: 150px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #34495e;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.in-stock {
+    color: green;
+    background-color: #d4edda;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.out-stock {
+    color: red;
+    background-color: #f8d7da;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+}
+
+.statistics {
+    background-color: #eaf2f8;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.warning {
+    color: #e67e22;
+    font-weight: bold;
+}
+
+.empty {
+    padding: 20px;
+    color: #e74c3c;
+    font-weight: bold;
+}
