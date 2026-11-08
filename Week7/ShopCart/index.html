@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ hàng</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app" class="container">
+        <h1>GIỎ HÀNG</h1>
+
+        <div v-if="carts.length > 0">
+            <div class="cart-header">
+                <span>Sản phẩm</span>
+                <span>Số lượng</span>
+                <span>Thành tiền</span>
+                <span>Thao tác</span>
+            </div>
+
+            <dong-gio-hang
+                v-for="pr in carts"
+                :key="pr.id"
+                :id="pr.id"
+                :name="pr.name"
+                :price="pr.price"
+                :quantity="pr.quantity"
+                :image="pr.image"
+                @doi-so-luong="updateQuantity"
+                @yeu-cau-xoa="deleteProduct"
+            >
+            </dong-gio-hang>
+
+            <div class="cart-summary">
+                <p>
+                    Tổng số lượng:
+                    <strong>{{ totalQuantity }}</strong>
+                </p>
+
+                <p>
+                    Tổng tiền:
+                    <strong>{{ formatPrice(totalPrice) }}</strong>
+                </p>
+            </div>
+        </div>
+
+        <div v-else class="empty-cart">
+            Giỏ hàng trống
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script type="module" src="app.js"></script>
+</body>
+</html>
