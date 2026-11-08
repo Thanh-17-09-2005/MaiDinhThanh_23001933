@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh mục sản phẩm</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app" class="container">
+        <h1>DANH MỤC SẢN PHẨM</h1>
+
+        <div class="product-list">
+            <the-san-pham
+                v-for="product in products"
+                :key="product.id"
+                :name="product.name"
+                :price="product.price"
+                :image="product.image"
+                :descript="product.descript"
+                :quantity="product.quantity"
+            >    
+            </the-san-pham>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script type="module" src="app.js"></script>
+</body>
+</html>
