@@ -1,0 +1,103 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    background: #f5f5f5;
+}
+
+/* Khung chính */
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+/* Tiêu đề */
+h2 {
+    text-align: center;
+    color: #198754;
+}
+
+h3 {
+    margin-top: 25px;
+}
+
+/* Form */
+label {
+    display: block;
+    margin-top: 12px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Button */
+button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+.save {
+    background: #198754;
+    color: white;
+}
+
+.edit {
+    background: #ffc107;
+}
+
+.delete {
+    background: #dc3545;
+    color: white;
+}
+
+/* Bảng sản phẩm */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background: #198754;
+    color: white;
+}
+
+/* Thông báo */
+.message {
+    padding: 10px;
+    margin-top: 15px;
+    background: #e9ecef;
+    border-radius: 4px;
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}
