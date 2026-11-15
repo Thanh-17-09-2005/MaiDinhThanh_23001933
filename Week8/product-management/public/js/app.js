@@ -98,7 +98,6 @@ createApp({
 
         // Chọn sản phẩm để sửa
         editProduct(product) {
-
             this.form = {
                 name: product.name,
                 price: Number(product.price),
@@ -111,7 +110,6 @@ createApp({
 
         // Xóa sản phẩm
         async deleteProduct(id) {
-
             const confirmDelete = confirm(
                 "Bạn có chắc chắn muốn xóa sản phẩm này không?"
             );
